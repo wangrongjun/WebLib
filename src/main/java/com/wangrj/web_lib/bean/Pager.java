@@ -132,7 +132,8 @@ public class Pager<T> {
         pager.setPageIndex(pageIndex);
 
         // 根据pager获取数据
-        List<T> list = listener.queryList(pager.getParameterMap(), pageIndex * pager.getPageSize(), pager.getPageSize());
+        List<T> list = listener.queryList(pager.getParameterMap(),
+                pageIndex * pager.getPageSize(), pager.getPageSize());
         pager.setList(list);
 
         // 把pager设置进session
