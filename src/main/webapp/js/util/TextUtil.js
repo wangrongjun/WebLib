@@ -9,11 +9,11 @@
 function updateParamInUrl(oldUrl, updateMap) {
     for (var k in updateMap) {
         var value = updateMap[k];
-        if (value == null || value == "") { //如果值为空，则没必要添加进url的参数列
+        if (value === null || value === "") { //如果值为空，则没必要添加进url的参数列
             continue;
-        } else if (oldUrl.indexOf(k) != -1) { //如果key存在
+        } else if (oldUrl.indexOf(k) !== -1) { //如果key存在
             oldUrl = oldUrl.replace(new RegExp(k + "=[^&]+"), k + "=" + value);
-        } else if (oldUrl.indexOf("?") != -1) { //如果?存在，即有别的参数，添加到参数后面
+        } else if (oldUrl.indexOf("?") !== -1) { //如果?存在，即有别的参数，添加到参数后面
             oldUrl = oldUrl + "&" + k + "=" + value;
         } else { //如果没有参数，直接加在后面
             oldUrl += "?" + k + "=" + value;
@@ -31,7 +31,7 @@ function testSetParamInUrl() {
         pass: "bcd"
     });
     var expected = "http://localhost/app?name=234&pass=bcd&sex=1";
-    if (actual != expected) {
+    if (actual !== expected) {
         alert("Bad,actual : " + actual);
     } else {
         alert("Good");
@@ -55,7 +55,7 @@ function testSetParamInUrl() {
  */
 function setParamInUrl(oldUrl, setMap) {
     var index = oldUrl.indexOf("?");
-    if (index != -1) {
+    if (index !== -1) {
         return updateParamInUrl(oldUrl.substring(0, index), setMap);
     } else {
         return updateParamInUrl(oldUrl, setMap);
@@ -64,7 +64,7 @@ function setParamInUrl(oldUrl, setMap) {
 
 function getTextAfterLastPoint(s) {
     var index = s.lastIndexOf(".");
-    if (index == -1) {
+    if (index === -1) {
         return s;
     }
     return s.substring(index + 1);
